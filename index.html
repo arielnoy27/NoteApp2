@@ -22,15 +22,16 @@
             <p class="eyebrow">SATURDAY, OCTOBER 24</p>
             <h1>Good morning, <em>Alex.</em></h1>
           </div>
-          <div class="header-actions"><button id="theme-toggle" class="theme-toggle" aria-label="Switch to dark mode">☾</button><button class="avatar" aria-label="Open profile">A</button></div>
+          <div class="header-actions"><button id="new-note" class="quick-add" aria-label="Create a new note">＋</button><button id="theme-toggle" class="theme-toggle" aria-label="Switch to dark mode">☾</button><button class="avatar" aria-label="Open profile">A</button></div>
         </header>
         <div class="search-row">
           <label class="search-box"><span aria-hidden="true">⌕</span><input id="search-input" type="search" placeholder="Search your notes" /></label>
           <button class="filter-button" aria-label="Filter notes">≡</button>
         </div>
         <div class="section-heading"><h2>Your notes</h2><span id="note-count">4 notes</span></div>
+        <div class="filter-strip" aria-label="Note filters"><button class="filter-chip active" data-filter="all">All</button><button class="filter-chip" data-filter="pinned">Pinned</button><button class="filter-chip" data-filter="todo">Tasks</button><button class="filter-chip" data-filter="archived">Archived</button><button class="filter-chip" data-filter="trash">Trash</button></div>
+        <label class="folder-filter">Folder <select id="folder-filter"><option value="">All folders</option></select></label>
         <div id="notes-list" class="notes-list"></div>
-        <button id="new-note" class="new-note"><span>＋</span> New note</button>
         <nav class="bottom-nav" aria-label="Primary navigation">
           <button class="nav-item active"><span>▤</span>Notes</button><button class="nav-item"><span>□</span>Tasks</button><button class="nav-item"><span>◌</span>Settings</button>
         </nav>
@@ -46,7 +47,7 @@
             <button id="more-button" class="icon-button" aria-label="More actions">•••</button>
           </div>
         </header>
-        <div id="more-menu" class="more-menu hidden"><button id="duplicate-button">Duplicate note</button><button id="delete-button" class="danger">Delete note</button></div>
+        <div id="more-menu" class="more-menu hidden"><button id="duplicate-button">Duplicate note</button><button id="archive-button">Archive note</button><button id="restore-button">Restore note</button><button id="delete-button" class="danger">Move to trash</button></div>
         <div id="writing-canvas" class="writing-canvas" contenteditable="true" role="textbox" aria-multiline="true" spellcheck="true"></div>
         <div id="checklist-canvas" class="checklist-canvas hidden"></div>
         <canvas id="drawing-canvas" class="drawing-canvas hidden"></canvas>
@@ -55,14 +56,21 @@
           <button id="mode-button" class="tool-button" aria-label="Change note mode">Aa</button>
           <button id="bold-button" class="tool-button" aria-label="Bold"><strong>B</strong></button>
           <button id="bullet-button" class="tool-button" aria-label="Bullet list">☷</button>
+          <button id="color-button" class="tool-button color-button" aria-label="Choose note color"><span class="current-color"></span></button>
           <span class="tool-divider"></span>
           <button id="direction-button" class="tool-button" aria-label="Writing direction">↔</button>
           <button id="done-button" class="done-button">Done</button>
         </footer>
         <div id="mode-menu" class="mode-menu hidden"><button data-mode="plain">Plain text</button><button data-mode="todo">To-do list</button><button data-mode="draw">Drawing</button></div>
+        <div id="color-menu" class="color-menu hidden" aria-label="Text colors"><button data-color="adaptive" aria-label="Black text in light mode, white text in dark mode"><span></span></button><button data-color="blue" aria-label="Blue text"><span></span></button><button data-color="green" aria-label="Green text"><span></span></button><button data-color="yellow" aria-label="Yellow text"><span></span></button><button data-color="red" aria-label="Red text"><span></span></button><button data-color="purple" aria-label="Purple text"><span></span></button></div>
       </section>
     </main>
+    <dialog id="organize-dialog"><form id="organize-form"><h2>Organize note</h2><label>Folder<input id="note-folder" list="folder-options" maxlength="60" placeholder="e.g. Personal" /></label><datalist id="folder-options"></datalist><label>Tags<input id="note-tags" maxlength="300" placeholder="ideas, home, reading" /></label><p>Separate tags with commas. Leave the folder empty for Unfiled.</p><div class="dialog-actions"><button type="button" id="organize-cancel">Cancel</button><button type="submit">Save</button></div></form></dialog>
     <script src="app.js"></script>
+    <script src="organization.js"></script>
+    <script src="checklist.js"></script>
+    <script src="colors.js"></script>
+    <script src="editor-tools.js"></script>
     <script>if ('serviceWorker' in navigator) navigator.serviceWorker.register('./sw.js');</script>
   </body>
 </html>
