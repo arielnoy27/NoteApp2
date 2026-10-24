@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#f5f4f0" />
+    <title>Papertrail Notes</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main id="app" class="app-shell">
+      <section id="home-view" class="home-view" aria-label="Notes home">
+        <header class="home-header">
+          <div>
+            <p class="eyebrow">SATURDAY, OCTOBER 24</p>
+            <h1>Good morning, <em>Alex.</em></h1>
+          </div>
+          <button class="avatar" aria-label="Open profile">A</button>
+        </header>
+        <div class="search-row">
+          <label class="search-box"><span aria-hidden="true">⌕</span><input id="search-input" type="search" placeholder="Search your notes" /></label>
+          <button class="filter-button" aria-label="Filter notes">≡</button>
+        </div>
+        <div class="section-heading"><h2>Your notes</h2><span id="note-count">4 notes</span></div>
+        <div id="notes-list" class="notes-list"></div>
+        <button id="new-note" class="new-note"><span>＋</span> New note</button>
+        <nav class="bottom-nav" aria-label="Primary navigation">
+          <button class="nav-item active"><span>▤</span>Notes</button><button class="nav-item"><span>□</span>Tasks</button><button class="nav-item"><span>◌</span>Settings</button>
+        </nav>
+      </section>
+
+      <section id="editor-view" class="editor-view hidden" aria-label="Full-screen note editor">
+        <header class="editor-topbar">
+          <button id="back-button" class="icon-button" aria-label="Back to notes">‹</button>
+          <input id="title-input" class="title-input" value="Sunday reset" aria-label="Note title" />
+          <div class="editor-actions">
+            <button id="pin-button" class="icon-button" aria-label="Pin note">⌖</button>
+            <button id="favorite-button" class="icon-button" aria-label="Favorite note">♡</button>
+            <button id="more-button" class="icon-button" aria-label="More actions">•••</button>
+          </div>
+        </header>
+        <div id="more-menu" class="more-menu hidden"><button id="duplicate-button">Duplicate note</button><button id="delete-button" class="danger">Delete note</button></div>
+        <div id="writing-canvas" class="writing-canvas" contenteditable="true" role="textbox" aria-multiline="true" spellcheck="true"></div>
+        <div id="checklist-canvas" class="checklist-canvas hidden"></div>
+        <canvas id="drawing-canvas" class="drawing-canvas hidden"></canvas>
+        <div id="save-status" class="save-status">Saved locally</div>
+        <footer id="format-bar" class="format-bar">
+          <button id="mode-button" class="tool-button" aria-label="Change note mode">Aa</button>
+          <button id="bold-button" class="tool-button" aria-label="Bold"><strong>B</strong></button>
+          <button id="bullet-button" class="tool-button" aria-label="Bullet list">☷</button>
+          <span class="tool-divider"></span>
+          <button id="direction-button" class="tool-button" aria-label="Writing direction">↔</button>
+          <button id="done-button" class="done-button">Done</button>
+        </footer>
+        <div id="mode-menu" class="mode-menu hidden"><button data-mode="plain">Plain text</button><button data-mode="todo">To-do list</button><button data-mode="draw">Drawing</button></div>
+      </section>
+    </main>
+    <script src="app.js"></script>
+  </body>
+</html>
