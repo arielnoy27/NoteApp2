@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap');
 
-:root { --paper:#f5f4f0; --ink:#20201d; --muted:#88877f; --line:#dfded8; --accent:#e8794f; --soft:#ecebe5; --card:#fff; --editor:#fbfaf7; }
-:root[data-theme="dark"] { --paper:#171715; --ink:#f3f1eb; --muted:#9c9a91; --line:#363630; --soft:#252521; --card:#20201d; --editor:#191917; }
+:root { --paper:#f2f6fb; --ink:#12233b; --muted:#64748b; --line:#d4deea; --accent:#2d5f9e; --soft:#e5edf7; --card:#ffffff; --editor:#f8fbff; }
+:root[data-theme="dark"] { --paper:#071426; --ink:#edf5ff; --muted:#91a5bd; --line:#1e3856; --soft:#10243d; --accent:#6ea3e8; --card:#0d1c30; --editor:#08182b; }
 * { box-sizing:border-box; }
 html,body { width:100%; max-width:100%; overflow-x:hidden; } body { margin:0; min-width:320px; background:var(--paper); color:var(--ink); font-family:'DM Sans',sans-serif; }
 button,input { font:inherit; }
@@ -25,12 +25,16 @@ h1 { margin:0; font-size:29px; line-height:1.1; letter-spacing:-.04em; font-weig
 @media (prefers-reduced-motion:reduce) { * { scroll-behavior:auto !important; transition:none !important; } }
 
 /* Narrow-phone fit: every dock item stays inside the viewport, including the gesture safe area. */
-.format-bar { width:100%; min-width:0; overflow:hidden; padding-left:max(8px, env(safe-area-inset-left)); padding-right:max(8px, env(safe-area-inset-right)); gap:2px; }
+.format-bar { width:100%; min-width:0; overflow:hidden; padding-left:max(8px, env(safe-area-inset-left)); padding-right:max(16px, env(safe-area-inset-right)); gap:2px; }
 .format-bar .tool-button { flex:0 1 42px; min-width:36px; }
 .format-bar .tool-divider { flex:0 0 1px; margin-inline:2px; }
-.done-button { flex:0 0 auto; max-width:72px; padding-inline:12px; white-space:nowrap; }
+.done-button { flex:0 0 auto; max-width:72px; margin-right:8px; padding-inline:12px; white-space:nowrap; }
 .editor-actions { min-width:0; }.editor-actions .icon-button { width:38px; }
 .writing-canvas,.checklist-canvas { font-size:clamp(17px, 4.7vw, 20px); padding-inline:clamp(16px, 6vw, 24px); }
 .save-status { top:calc(63px + env(safe-area-inset-top)); right:12px; }
 .search-box { background:var(--card); }
-@media (max-width:360px) { .format-bar .tool-button { width:36px; padding:0; }.format-bar .tool-divider { margin-inline:0; }.done-button { padding-inline:9px; font-size:12px; }.editor-actions .icon-button { width:34px; }.editor-topbar { gap:4px; padding-inline:8px; } }
+@media (max-width:360px) { .format-bar { padding-right:18px; }.format-bar .tool-button { width:36px; padding:0; }.format-bar .tool-divider { margin-inline:0; }.done-button { margin-right:6px; padding-inline:9px; font-size:12px; }.editor-actions .icon-button { width:34px; }.editor-topbar { gap:4px; padding-inline:8px; } }
+:root[data-theme="dark"] .search-box, :root[data-theme="dark"] .more-menu, :root[data-theme="dark"] .mode-menu { background:var(--card); }
+:root[data-theme="dark"] .editor-view { background:var(--editor); }
+:root[data-theme="dark"] .format-bar { background:var(--paper); }
+:root[data-theme="dark"] .drawing-canvas { background:var(--card); }
