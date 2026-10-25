@@ -15,12 +15,14 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <div id="connection-banner" class="connection-banner hidden" role="status"></div>
+    <div id="update-banner" class="update-banner hidden" role="status"><span>A new version is ready.</span><button id="apply-update" type="button">Update</button></div>
     <main id="app" class="app-shell">
       <section id="home-view" class="home-view" aria-label="Notes home">
         <header class="home-header">
           <div>
-            <p class="eyebrow">SATURDAY, OCTOBER 24</p>
-            <h1>Good morning, <em>Alex.</em></h1>
+            <p id="today-label" class="eyebrow"></p>
+            <h1><span id="greeting-label">Good morning,</span> <em id="user-name-label">Alex.</em></h1>
           </div>
           <div class="header-actions"><button id="new-note" class="quick-add" aria-label="Create a new note">＋</button><button id="theme-toggle" class="theme-toggle" aria-label="Switch to dark mode">☾</button><button class="avatar" aria-label="Open profile">A</button></div>
         </header>
@@ -33,7 +35,7 @@
         <label class="folder-filter">Folder <select id="folder-filter"><option value="">All folders</option></select></label>
         <div id="notes-list" class="notes-list"></div>
         <nav class="bottom-nav" aria-label="Primary navigation">
-          <button class="nav-item active"><span>▤</span>Notes</button><button class="nav-item"><span>□</span>Tasks</button><button class="nav-item"><span>◌</span>Settings</button>
+          <button id="nav-notes" class="nav-item active"><span>▤</span>Notes</button><button id="nav-tasks" class="nav-item"><span>□</span>Tasks</button><button id="nav-settings" class="nav-item"><span>◌</span>Settings</button>
         </nav>
       </section>
 
@@ -51,6 +53,7 @@
         <div id="writing-canvas" class="writing-canvas" contenteditable="true" role="textbox" aria-multiline="true" spellcheck="true"></div>
         <div id="checklist-canvas" class="checklist-canvas hidden"></div>
         <canvas id="drawing-canvas" class="drawing-canvas hidden"></canvas>
+        <div id="drawing-tools" class="drawing-tools hidden" aria-label="Drawing tools"><label class="draw-color" aria-label="Pen color"><input id="draw-color" type="color" value="#438ee8" /></label><label class="draw-size">Size<input id="draw-size" type="range" min="1" max="18" value="4" /></label><button id="draw-eraser" type="button">Eraser</button><button id="draw-undo" type="button" aria-label="Undo drawing">↶</button><button id="draw-redo" type="button" aria-label="Redo drawing">↷</button><button id="draw-clear" type="button">Clear</button><button id="draw-exit" type="button">Done</button></div>
         <div id="save-status" class="save-status">Saved locally</div>
         <footer id="format-bar" class="format-bar">
           <button id="mode-button" class="tool-button" aria-label="Change note mode">Aa</button>
@@ -66,11 +69,15 @@
       </section>
     </main>
     <dialog id="organize-dialog"><form id="organize-form"><h2>Organize note</h2><label>Folder<input id="note-folder" list="folder-options" maxlength="60" placeholder="e.g. Personal" /></label><datalist id="folder-options"></datalist><label>Tags<input id="note-tags" maxlength="300" placeholder="ideas, home, reading" /></label><p>Separate tags with commas. Leave the folder empty for Unfiled.</p><div class="dialog-actions"><button type="button" id="organize-cancel">Cancel</button><button type="submit">Save</button></div></form></dialog>
+    <dialog id="settings-dialog"><form id="settings-form"><h2>Settings</h2><label>Your name<input id="setting-name" maxlength="30" autocomplete="name" /></label><label>Theme<select id="setting-theme"><option value="light">Light</option><option value="dark">Dark</option><option value="system">Use device setting</option></select></label><label>Writing size<select id="setting-font-size"><option value="small">Small</option><option value="medium">Comfortable</option><option value="large">Large</option></select></label><label>Line spacing<select id="setting-line-spacing"><option value="compact">Compact</option><option value="comfortable">Comfortable</option><option value="roomy">Roomy</option></select></label><section class="pwa-settings"><h3>App</h3><p>Install Papertrail for quicker access and offline use.</p><button type="button" id="install-app" hidden>Install app</button><output id="install-status" aria-live="polite"></output></section><section class="backup-settings"><h3>Backup</h3><p>Download all notes or merge notes from an earlier backup.</p><div><button type="button" id="export-backup">Export backup</button><button type="button" id="import-backup">Import backup</button><input id="backup-file" type="file" accept="application/json,.json" hidden /></div><output id="backup-status" aria-live="polite"></output></section><div class="dialog-actions"><button type="button" id="settings-cancel">Cancel</button><button type="submit">Save settings</button></div></form></dialog>
     <script src="app.js"></script>
     <script src="organization.js"></script>
     <script src="checklist.js"></script>
     <script src="colors.js"></script>
     <script src="editor-tools.js"></script>
-    <script>if ('serviceWorker' in navigator) navigator.serviceWorker.register('./sw.js');</script>
+    <script src="drawing.js"></script>
+    <script src="settings.js"></script>
+    <script src="backup.js"></script>
+    <script src="pwa-experience.js"></script>
   </body>
 </html>
