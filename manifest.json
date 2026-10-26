@@ -1,9 +1,9 @@
 {
   "name": "Papertrail Notes",
   "short_name": "Papertrail",
-  "id": "./",
+  "id": "./index.html",
   "description": "A calm, full-screen notes and to-do app.",
-  "start_url": "./",
+  "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
   "orientation": "portrait-primary",
