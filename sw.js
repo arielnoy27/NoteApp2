@@ -1,4 +1,4 @@
-const CACHE_NAME = 'papertrail-v15';
+const CACHE_NAME = 'papertrail-v16';
 const APP_SHELL = ['./', './index.html', './styles.css', './app.js', './organization.js', './checklist.js', './colors.js', './editor-tools.js', './drawing.js', './settings.js', './backup.js', './pwa-experience.js', './manifest.json', './icons/icon-192.png', './icons/icon-512.png'];
 self.addEventListener('install', event => {
   event.waitUntil(caches.open(CACHE_NAME).then(async cache => {
